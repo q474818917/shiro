@@ -43,6 +43,8 @@ import java.io.Serializable;
 import java.util.Collection;
 
 /**
+ * Shiro默认关联SecurityManager实现类和一系列Realm集合
+ *
  * The Shiro framework's default concrete implementation of the {@link SecurityManager} interface,
  * based around a collection of {@link org.apache.shiro.realm.Realm}s.  This implementation delegates its
  * authentication, authorization, and session operations to wrapped {@link Authenticator}, {@link Authorizer}, and
@@ -331,14 +333,17 @@ public class DefaultSecurityManager extends SessionsSecurityManager {
      */
     public Subject createSubject(SubjectContext subjectContext) {
         //create a copy so we don't modify the argument's backing map:
+        //创建一个副本，不修改backing
         SubjectContext context = copy(subjectContext);
 
         //ensure that the context has a SecurityManager instance, and if not, add one:
+        //确保subjectContext对应一个SecurityManager
         context = ensureSecurityManager(context);
 
         //Resolve an associated Session (usually based on a referenced session ID), and place it in the context before
         //sending to the SubjectFactory.  The SubjectFactory should not need to know how to acquire sessions as the
         //process is often environment specific - better to shield the SF from these details:
+        //将关联的Session植入context
         context = resolveSession(context);
 
         //Similarly, the SubjectFactory should not require any concept of RememberMe - translate that here first

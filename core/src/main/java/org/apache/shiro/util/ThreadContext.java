@@ -28,7 +28,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+
 /**
+ * 绑定当前线程的SecurityManager、Subject
  * A ThreadContext provides a means of binding and unbinding objects to the
  * current thread based on key/value pairs.
  * <p/>
@@ -108,7 +110,7 @@ public abstract class ThreadContext {
 
     private static void ensureResourcesInitialized(){
         if (resources.get() == null){
-           resources.set(new HashMap<Object, Object>());
+            resources.set(new HashMap<Object, Object>());
         }
     }
 
@@ -320,7 +322,7 @@ public abstract class ThreadContext {
     public static Subject unbindSubject() {
         return (Subject) remove(SUBJECT_KEY);
     }
-    
+
     private static final class InheritableThreadLocalMap<T extends Map<Object, Object>> extends InheritableThreadLocal<Map<Object, Object>> {
 
         /**
@@ -340,4 +342,3 @@ public abstract class ThreadContext {
         }
     }
 }
-

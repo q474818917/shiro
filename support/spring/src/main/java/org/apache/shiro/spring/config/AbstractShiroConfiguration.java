@@ -87,7 +87,7 @@ public class AbstractShiroConfiguration {
         return sessionManager;
     }
 
-
+    //DefaultSecurityManager 集成自SessionSecurityManager
     protected SessionsSecurityManager createSecurityManager() {
         DefaultSecurityManager securityManager = new DefaultSecurityManager();
         securityManager.setSubjectDAO(subjectDAO());

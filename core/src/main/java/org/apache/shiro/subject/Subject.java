@@ -824,6 +824,7 @@ public interface Subject {
         }
 
         /**
+         * 只有DefaultSecurityManager中有该createSubject方法
          * Creates and returns a new {@code Subject} instance reflecting the cumulative state acquired by the
          * other methods in this class.
          * <p/>

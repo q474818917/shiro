@@ -66,6 +66,7 @@ public class DefaultSubjectContext extends MapContext implements SubjectContext 
 
     public static final String SESSION_CREATION_ENABLED = DefaultSubjectContext.class.getName() + ".SESSION_CREATION_ENABLED";
 
+    //分界线，此分界线以上的都放入到MapContext中
     /**
      * The session key that is used to store subject principals.
      */
